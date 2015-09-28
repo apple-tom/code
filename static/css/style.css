@@ -1,0 +1,30 @@
+@charset "utf-8";
+#container{
+	max-width: 700px; margin: 0 auto;
+	background-color: #16162C;
+	font-size: 15px;
+}
+.mybutton{
+	padding-bottom: 250px;
+}
+.mybutton a{
+	text-decoration: none; color: #fff;
+}
+.btn{width: 84%; margin-left: 5%; margin-right: 10%; margin-top: 20px;  }
+@media (max-width: 368px) {
+	#highcharts{
+		height: 280px;
+	}
+}
+@media (min-width: 369px) and (max-width:430px) {
+	#highcharts{
+		height: 320px;
+	}
+}
+@media (min-width: 431px) and (max-width:768px) {
+	#highcharts{
+		height: 420px;
+	}
+}
+
+

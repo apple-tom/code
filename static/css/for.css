@@ -1,0 +1,109 @@
+@charset "utf-8";
+img, object, embed, video {
+	max-width: 100%;
+}
+
+
+.fluid {
+	clear: both;
+	margin-left: 0;
+	width: 100%;
+	float: left;
+	display: block;
+}
+
+.fluidList {
+    list-style:none;
+    list-style-image:none;
+    margin:0;
+    padding:0;        
+}
+
+/* Mobile Layout: 480px and below. */
+  
+.gridContainer {
+	margin-left: auto;
+	margin-right: auto;
+	width: 100%;;
+	clear: none;
+	float: none;
+}
+.zeroMargin_mobile {
+    margin-left: 0;
+}
+.hide_mobile {
+    display: none;
+}
+
+.line1,.line2{width: 100%; height: 1px; background-color: #83A4B0;}
+.line2{background-color: #4499A7;}
+#header{
+    background-color: #2FB4E9;
+    width: 100%;
+    text-align: center;
+    font-size: 16px;
+    float: left;
+    font-weight: bold;
+    color: #fff;
+    padding-top: 0.3em;
+    padding-bottom: 0.2em;
+}
+#headerwrap span{font-size: 24px; float: left;
+    padding-top: 5px;}
+#headerwrap img{height: 35px; float: left;}
+#headerwrap .logout{height: 35px; float: right;}
+#headerwrap .othlogo{display: none;}
+
+@media only screen and (min-width: 769px) {
+
+    .gridContainer {
+        width: 100%;;
+        margin: auto;
+        clear: none;
+        float: none;
+        margin-left: auto;
+
+    }
+
+
+    .zeroMargin_desktop {
+        margin-left: 0;
+    }
+    .hide_desktop {
+        display: none;
+    }
+
+    .mytitle {font-size: 1em;}
+    .line1,.line2{width: 100%; height: 2px; background-color: #83A4B0;}
+    .line2{background-color: #4499A7;}
+    #headerwrap{height: 40px;}
+
+    #headerwrap img { height: 46px; float: left;}
+    #headerwrap img{ margin-right: 5px ; border: solid 1px; padding: 2px;}
+    #headerwrap .welcome{float: left;}
+    #headerwrap .othlogo{ display: inline;}
+    #headerwrap .logout{float: right; height: 40px; }
+    #headerwrap .logout:hover{
+        filter:alpha(opacity=70); /*IE滤镜，透明度50%*/
+        -moz-opacity:0.7; /*Firefox私有，透明度50%*/
+        opacity:0.7;/*其他，透明度50%*/
+    }
+
+}
+
+
+/* code by  yuzhongping
+time 2014-12-15 15:50
+vistion:1.0
+*/
+body{background-color: #ffffff;font-family:sans-serif, 宋体，微软雅黑;}
+
+
+.footer{max-width:700px;
+    width: 90%;
+    margin: auto;
+    margin:3em auto 0;
+    font-size: 0.9em;
+    text-align: center;
+    color: #666;
+}
