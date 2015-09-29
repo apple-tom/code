@@ -57,13 +57,13 @@
             </li>
 
             <li style="margin-left: 10%;">
-                <div><a href="<?php echo site_url ( 'info/main' ); ?>"><img src="<?php echo base_url();?>static/images/for/3.gif"></a></div>
+                <div><a href="<?php echo site_url ( 'info/ucai' ); ?>"><img src="<?php echo base_url();?>static/images/for/3.gif"></a></div>
                 <div class="mytitle">UCAI评分</div>
             </li>
 
             <li>
-                <div><a href="<?php echo site_url ( 'info/ucai' ); ?>"><img src="<?php echo base_url();?>static/images/for/5.gif"></a></div>
-                <div class="mytitle">内镜诊断</div>
+                <div><a href="#"><img src="<?php echo base_url();?>static/images/for/5.gif"></a></div>
+                <div class="mytitle">待定模块</div>
             </li>
 
             <li  style="margin-left: 10%;">

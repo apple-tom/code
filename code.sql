@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: 2015-09-28 11:55:14
+-- Generation Time: 2015-09-29 10:59:35
 -- 服务器版本： 5.6.16
 -- PHP Version: 5.5.9
 
@@ -19,6 +19,53 @@ SET time_zone = "+00:00";
 --
 -- Database: `code`
 --
+
+-- --------------------------------------------------------
+
+--
+-- 表的结构 `mx_answer`
+--
+
+CREATE TABLE IF NOT EXISTS `mx_answer` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `qid` int(10) unsigned NOT NULL,
+  `answer` varchar(245) NOT NULL,
+  `core` int(11) NOT NULL,
+  `cdate` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `udate` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `is_del` smallint(6) DEFAULT '1',
+  PRIMARY KEY (`id`),
+  KEY `fk_mx_answer_mx_question1_idx` (`qid`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=24 ;
+
+--
+-- 转存表中的数据 `mx_answer`
+--
+
+INSERT INTO `mx_answer` (`id`, `qid`, `answer`, `core`, `cdate`, `udate`, `is_del`) VALUES
+(1, 1, '&lt;18', 0, '2015-09-29 05:37:24', '2015-09-29 05:37:24', 1),
+(2, 1, '18-35', 1, '2015-09-29 05:37:24', '2015-09-29 05:37:24', 1),
+(3, 1, '36-60', 2, '2015-09-29 05:37:24', '2015-09-29 05:37:24', 1),
+(4, 1, '&gt;60', 3, '2015-09-29 05:37:24', '2015-09-29 05:37:24', 1),
+(5, 2, '无', 0, '2015-09-29 05:37:24', '2015-09-29 05:37:24', 1),
+(6, 2, '少', 2, '2015-09-29 05:37:24', '2015-09-29 05:37:24', 1),
+(7, 2, '差', 4, '2015-09-29 05:37:24', '2015-09-29 05:37:24', 1),
+(8, 3, '良好', 0, '2015-09-29 05:37:24', '2015-09-29 05:37:24', 1),
+(9, 3, '一般', 1, '2015-09-29 05:37:24', '2015-09-29 05:37:24', 1),
+(10, 3, '差', 2, '2015-09-29 05:37:24', '2015-09-29 05:37:24', 1),
+(11, 3, '很差', 3, '2015-09-29 05:37:24', '2015-09-29 05:37:24', 1),
+(12, 4, '无', 0, '2015-09-29 05:37:24', '2015-09-29 05:37:24', 1),
+(13, 4, '轻', 1, '2015-09-29 05:37:24', '2015-09-29 05:37:24', 1),
+(14, 4, '中', 2, '2015-09-29 05:37:24', '2015-09-29 05:37:24', 1),
+(15, 4, '重', 3, '2015-09-29 05:37:24', '2015-09-29 05:41:54', 1),
+(16, 5, '37-38℃', 0, '2015-09-29 05:41:54', '2015-09-29 05:41:54', 1),
+(17, 5, '&gt;38℃', 3, '2015-09-29 05:41:54', '2015-09-29 05:41:54', 1),
+(18, 6, '虹膜炎', 3, '2015-09-29 05:41:54', '2015-09-29 05:41:54', 1),
+(19, 6, '结节性红斑', 3, '2015-09-29 05:41:54', '2015-09-29 05:41:54', 1),
+(20, 6, '关节炎', 3, '2015-09-29 05:41:54', '2015-09-29 05:41:54', 1),
+(21, 7, 'ESR&gt;50 &nbsp;mm/h', 1, '2015-09-29 05:41:54', '2015-09-29 05:41:54', 1),
+(22, 7, 'ESR&gt;100 &nbsp;mm/h', 2, '2015-09-29 05:41:54', '2015-09-29 05:41:54', 1),
+(23, 7, 'Hb&lt;100 &nbsp;g/L', 0, '2015-09-29 05:41:54', '2015-09-29 05:41:54', 1);
 
 -- --------------------------------------------------------
 
@@ -119,7 +166,7 @@ CREATE TABLE IF NOT EXISTS `mx_customer` (
   `udate` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `is_del` smallint(6) DEFAULT '1',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=100069 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=100072 ;
 
 --
 -- 转存表中的数据 `mx_customer`
@@ -129,9 +176,66 @@ INSERT INTO `mx_customer` (`id`, `name`, `sex`, `hospital_id`, `phone`, `height`
 (100061, '张大明', 1, '00058', '13612304569', 157.6, 157.5, '2015-09-24 08:52:37', '2015-09-24 08:58:15', 1),
 (100062, '王晓张', 1, '00085', '15926103225', 171.4, 171.5, '2015-09-25 08:57:51', '2015-09-25 08:57:51', 1),
 (100063, '艾美丽', 2, '452001', '13876202044', 171.5, 171.5, '2015-09-25 08:57:51', '2015-09-28 01:06:55', 1),
-(100066, '余忠平', 0, '100221', '13795201234', NULL, NULL, '2015-09-28 09:23:23', '2015-09-28 09:23:23', 1),
-(100067, '余忠平', 0, '100221', '13795201234', NULL, NULL, '2015-09-28 09:24:11', '2015-09-28 09:24:11', 1),
-(100068, '余忠平', 0, '100221', '13795201234', NULL, NULL, '2015-09-28 09:34:22', '2015-09-28 09:34:22', 1);
+(100071, '测试008', 0, '001225', '13896602123', NULL, NULL, '2015-09-29 06:59:39', '2015-09-29 07:57:51', 1);
+
+-- --------------------------------------------------------
+
+--
+-- 表的结构 `mx_question`
+--
+
+CREATE TABLE IF NOT EXISTS `mx_question` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `title` varchar(245) NOT NULL,
+  `type` smallint(6) DEFAULT NULL,
+  `cdate` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `udate` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `is_del` smallint(6) DEFAULT '1',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=8 ;
+
+--
+-- 转存表中的数据 `mx_question`
+--
+
+INSERT INTO `mx_question` (`id`, `title`, `type`, `cdate`, `udate`, `is_del`) VALUES
+(1, '每周大便次数', 1, '2015-09-29 03:35:59', '2015-09-29 05:32:16', 1),
+(2, '大便带血（平均每周观察结果）', 1, '2015-09-29 03:35:59', '2015-09-29 05:32:16', 1),
+(3, '症状综合评估', 1, '2015-09-29 03:35:59', '2015-09-29 05:32:16', 1),
+(4, '腹痛/绞痛', 1, '2015-09-29 03:35:59', '2015-09-29 05:32:16', 1),
+(5, '结肠炎所致发热', 1, '2015-09-29 03:35:59', '2015-09-29 05:32:16', 1),
+(6, '肠外表现', 1, '2015-09-29 03:35:59', '2015-09-29 05:32:16', 1),
+(7, '实验室检查', 1, '2015-09-29 03:36:53', '2015-09-29 05:32:16', 1);
+
+-- --------------------------------------------------------
+
+--
+-- 表的结构 `mx_ucai`
+--
+
+CREATE TABLE IF NOT EXISTS `mx_ucai` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `cdate` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `udate` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `is_del` smallint(6) DEFAULT '1',
+  `uid` int(10) unsigned NOT NULL,
+  `ucai1` smallint(6) DEFAULT NULL,
+  `ucai2` smallint(6) DEFAULT NULL,
+  `ucai3` smallint(6) DEFAULT NULL,
+  `ucai4` smallint(6) DEFAULT NULL,
+  `ucai5` smallint(6) DEFAULT NULL,
+  `ucai6` smallint(6) DEFAULT NULL,
+  `ucai7` smallint(6) DEFAULT NULL,
+  `total` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+
+--
+-- 转存表中的数据 `mx_ucai`
+--
+
+INSERT INTO `mx_ucai` (`id`, `cdate`, `udate`, `is_del`, `uid`, `ucai1`, `ucai2`, `ucai3`, `ucai4`, `ucai5`, `ucai6`, `ucai7`, `total`) VALUES
+(1, '2015-09-29 07:37:59', '2015-09-29 07:37:59', 1, 100071, 2, 2, 0, 0, 0, 3, 2, 9);
 
 -- --------------------------------------------------------
 
@@ -192,10 +296,16 @@ INSERT INTO `mx_weight` (`id`, `uid`, `weight`, `cdate`, `udate`, `is_del`) VALU
 --
 
 --
+-- 限制表 `mx_answer`
+--
+ALTER TABLE `mx_answer`
+  ADD CONSTRAINT `fk_mx_answer_mx_question1` FOREIGN KEY (`qid`) REFERENCES `mx_question` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
 -- 限制表 `mx_weight`
 --
 ALTER TABLE `mx_weight`
-  ADD CONSTRAINT `fk_mx_weight_mx_customer` FOREIGN KEY (`uid`) REFERENCES `mx_customer` (`id`) ON UPDATE CASCADE;
+  ADD CONSTRAINT `fk_mx_weight_mx_customer` FOREIGN KEY (`uid`) REFERENCES `mx_customer` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

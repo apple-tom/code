@@ -108,12 +108,15 @@
                         <span>性别：<?php if($row['sex'] ==1){echo "男";}else{echo "女";} ?>
                         ，身高：<?php echo $row["height"]; ?>cm</span>
                         <span class="my_btn">
+                            <?php if(!empty($row["height"])) {?>
                             <a href="<?php echo site_url ('info/cdai/'.$row['id']); ?>"  class="" role="button" style="width=50px;">
                                 体重CDAI
                             </a>&nbsp;&nbsp;&nbsp;
-                            <a href=""  class="" role="button" style="width=50px;">
+                            <?php  } else {?>
+                            <a href="<?php echo site_url ('info/ucai4/'.$row['id']); ?>"  class="" role="button" style="width=50px;">
                                 内镜诊断EI
                             </a>
+                            <?php }?>
                         </span>
                     </div>
                 </div>

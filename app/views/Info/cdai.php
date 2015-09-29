@@ -19,14 +19,16 @@
 
     </div>
     <div class="mybutton">
-        <?php foreach ($customer as $row) { ?>
+        <?php foreach ($customer as $row) { 
+            if(!empty($row["height"])){
+        ?>
             <a href="<?php echo site_url ('info/cdai/'.$row['id']); ?>"  class="btn btn-lg
             <?php if($row['id'] == $id){echo "btn-success";} else {echo "btn-primary";} ?>" role="button">
                 <?php echo $row["name"]; ?>
                 【<?php if($row['sex'] ==1){echo "男";}else{echo "女";} ?>】
                 （身高：<?php echo $row["height"]; ?>）
             </a>
-        <?php } ?>
+        <?php } }?>
         <a href="<?php echo site_url ('info/index'); ?>"  class="btn btn-primary btn-lg" role="button">
             返回
         </a>
@@ -302,7 +304,7 @@
             },
 
             xAxis: {
-                categories: [ '', '', '', '', '', '', '']
+                categories: [ '9.5', '9.6', '9.7', '9.8', '9.9', '9.10', '9.11']
             },
             yAxis: {
                 title: {
@@ -312,7 +314,7 @@
             tooltip: {
                 enabled: true,
                 formatter: function() {
-                    return '<b>'+ this.series.name +'</b><br>'+this.x +': '+ this.y +'KG';
+                    return this.series.name + '<br/><b>时间：'+ this.x +'日</b><br>' +'体重： '+ this.y +'KG';
                 }
             },
 

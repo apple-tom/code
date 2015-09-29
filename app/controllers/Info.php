@@ -106,9 +106,54 @@ class Info extends CI_Controller {
 
 	public function ucai3($id = 0)
 	{
+		$my_array['type'] = 1;
+		$list["question"] = $this->Data_model->get_where_array_order("question",$my_array,"id asc" );
+		$list["answer"] = $this->Data_model->get_data("id asc","answer");
 		$list['uid'] = $id;
 		$list['title'] = "UCAI评分-评测";
 		$this->load->view('Info/ucai3',$list);
+	}
+
+	public function ucai3_do()
+	{
+		$total = 0;
+
+		for ($i=1; $i <8 ; $i++) { 
+			$addData['ucai'.$i] = trim(htmlspecialchars ($this->input->post ('ucai'.$i)));
+			$total = $total + $addData['ucai'.$i];
+		}
+		$addData['uid'] = trim(htmlspecialchars ($this->input->post ("uid")));
+		$addData['total'] = $total;
+		//print_r($addData);
+		$this->db->trans_start();
+        $KSId = $this->Data_model->insert_data($addData, 'ucai');
+        $this->db->trans_complete();	
+
+        if($KSId >0){
+        	//显示页面详
+			$where = site_url ('Info/ucai4/'.$addData['uid']);
+            header("Content-Type:text/html;charset=utf-8");
+            echo '<script>alert("UCAI评分成功");';
+            echo 'window.location.href="' .$where . '";</script>';
+            exit();
+
+        }else{
+        	$status ['where'] = $_SERVER ['HTTP_REFERER']; // 来源地址
+			header("Content-Type:text/html;charset=utf-8");
+            echo '<script>alert("UCAI评分失败，请重新再试");';
+            echo 'window.location.href="' . $status ['where'] . '";</script>';
+            exit();
+        }
+	}
+
+	public function ucai4($id = 0)
+	{	
+		$my_array['uid'] = $id;
+		$list["ucai"] = $this->Data_model->get_where_array("ucai",$my_array );
+		$list["customer"] = $this->Data_model->get_adata($id,"customer");
+		//print_r($list);
+		$list['title'] = "UCAI评分-评测结果";
+		$this->load->view('Info/ucai4',$list);
 	}
 
 }

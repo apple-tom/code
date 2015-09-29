@@ -63,7 +63,7 @@
         }
         
         .btn-2{width: 90%;}
-        .mybutton2{margin: 0;padding: 0;}
+        .mybutton2{margin: 0;padding: 0;margin-top: 20px;}
     
         input[type=radio] {
             border: 2px solid #999;width: 19px; height: 19px; border-radius: 9px;
@@ -89,8 +89,12 @@
             font-size: 16px; margin-left: 12px;font-weight: bold;
         }
         .item .radio{
-            font-size: 15px;line-height: 30px; height: 30px; margin-left: 22px;
+            font-size: 15px;line-height: 25px; height: 25px; margin-left: 22px;
         }
+        .content .con_title2{
+            margin-top: 22px;
+        }
+        .content ul{margin-left: 15px;}
 
 
         
@@ -112,37 +116,39 @@
     <div class="content">
         <div style="height:10px;">&nbsp;</div>
         <div class="con_title">
-            炎症性肠病完整诊断
+            客户信息
         </div>
-        <form action="<?php echo site_url("Info/ucai3_do");?>" method="post" id="myform">
-        <ul class="con_ul">
-
-
-            <?php 
-            $i =1;
-            foreach ($question as $row1) { ?>
-            <li class="item">
-                <div class="item-title"><?php echo $i."、".$row1['title']; ?></div>
-                <input type="hidden" name="uid" value="<?php echo $uid; ?>">
-                <?php  foreach ($answer as $row2) { 
-                    if($row2['qid'] == $row1['id']){
-                ?>
-                   
-                <div class="radio">
-                    <label>
-                        <input type="radio" class="ucai" name="ucai<?php echo $i;?>" value="<?php echo $row2['core']; ?>">
-                        &nbsp;<?php echo $row2['answer']; ?>
-                    </label>
-                </div>
-                <?php }} ?>
-                
-            </li>
-            <?php $i++;} ?>
-           
-            
+        <ul>
+            <li  class="item">客户编号：<?php echo $customer['id'];?></li>
+            <li  class="item">客户姓名：<?php echo $customer['name'];?></li>
+            <li  class="item">门诊/住院号：<?php echo $customer['hospital_id'];?></li>
+            <li  class="item">联系方式：<?php echo $customer['phone'];?></li>
         </ul>
-        <input class="btn btn-success btn-2" type="submit"  value="提交">
-        </form>
+
+        <div class="con_title con_title2">
+            炎症性肠病完整诊断结果
+        </div>
+        <ul>
+        <?php  foreach ($ucai as $row1) {  ?>
+            
+              
+            <li  class="item">
+                <span style="color:red;">
+                    CAI= <?php echo $row1['total']; ?>
+                </span>
+            </li>
+            <li  class="item">
+                <span style="color:red;">
+                    所在时期：<?php if($row1['total'] <=6) echo "静止期"; else echo "活动期"; ?>
+                </span>
+            </li>
+        <?php } ?>  
+            <li  class="item">
+                静止期：CAI <= 6 <br/>
+                活动期：CAI >6
+            </li>
+        </ul>
+        
       
     </div>
     
@@ -161,23 +167,7 @@
 <script type="text/javascript">
     $(function()
     {
-        $("#name").focus();
-        $("#myform").submit(function()
-        {
-            <?php $i=1;
-                foreach ($question as $row3) {
-            ?>
-                    var val<?php echo $i;?>=$('input:radio[name="ucai<?php echo $i;?>"]:checked').val();
-                    if(val<?php echo $i;?>==null){
-                        alert("还未输入所有选项!");
-                        return false;
-                    }
-            <?php
-                $i++;
-            }
-            ?>
-        });
-        //return true;
+        
     });
 
 </script>
